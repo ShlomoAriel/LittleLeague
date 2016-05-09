@@ -19,10 +19,16 @@ namespace NewLeague.Domain
             Mapper.CreateMap<Match, MatchViewModel>().ReverseMap();
             Mapper.CreateMap<ApplicationUser, UserModel>().ReverseMap();
             Mapper.CreateMap<Match, MatchFormModel>().ReverseMap();
+            Mapper.CreateMap<Attendance, AttendanceViewModel>().ReverseMap();
             Mapper.CreateMap<MatchFormModel, MatchViewModel>().ReverseMap();
             Mapper.CreateMap<Goal, GoalViewModel>().ReverseMap();
+            Mapper.CreateMap<Assist, AssistViewModel>().ReverseMap();
             Mapper.CreateMap<Position, PositionViewModel>().ReverseMap();
             Mapper.CreateMap<PlayerRegistrationModel, Player>().ReverseMap();
+            Mapper.CreateMap<Player, Attendance>()
+                .ForMember(dest => dest.PlayerId, opt => opt.MapFrom(src => src.Id));
+            Mapper.CreateMap<PlayerViewModel, Attendance>()
+                .ForMember(dest => dest.PlayerId, opt => opt.MapFrom(src => src.Id));
             
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);

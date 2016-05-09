@@ -88,6 +88,15 @@ namespace NewLeague.Domain.Controllers
         }
 
         [HttpGet]
+        public HttpResponseMessage GetGoalssBySeason(int seasonId)
+        {
+            var goals = db.Goals.ToList().Where(x => x.SeasonId.Equals(seasonId));
+            var goalsViewModel = Mapper.Map<IEnumerable<GoalViewModel>>(goals);
+
+            return Request.CreateResponse(goalsViewModel);
+        }
+
+        [HttpGet]
         public HttpResponseMessage GetPositions()
         {
             var positions = db.Positions.ToList();
@@ -264,9 +273,9 @@ namespace NewLeague.Domain.Controllers
             return teamRanking;
         }
         // GET api/Match/5
-        public Match GetMatch(int id)
+        public MatchViewModel GetMatch(int id)
         {
-            Match match = db.Matches.Find(id);
+            var match = Mapper.Map<MatchViewModel>(db.Matches.Find(id));
             if (match == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -274,7 +283,20 @@ namespace NewLeague.Domain.Controllers
 
             return match;
         }
-
+        public IEnumerable<PlayerViewModel> GetMatchPlayers(int id)
+        {
+            var match = GetMatch(id);
+            var teamPlayers = GetSeasonPlayers(match.SeasonId).Where(x => x.TeamId == match.AwayId || x.TeamId == match.HomeId);
+            var teamPlayersModel = Mapper.Map<IEnumerable<PlayerViewModel>>(teamPlayers);
+            return teamPlayersModel;
+        }
+        public IEnumerable<AttendanceViewModel> GetMatchAttendance(int matchId)
+        {
+            var players = db.Attendances.Where(x => x.MatchId == matchId);
+            var teamPlayersModel = Mapper.Map<IEnumerable<AttendanceViewModel>>(players);
+            return teamPlayersModel;
+        }
+        
         public IEnumerable<PlayerViewModel> GetTeamPlayers(int teamId)
         {
             var teamPlayers = db.Players.Where(x => x.TeamId == teamId);
@@ -306,9 +328,9 @@ namespace NewLeague.Domain.Controllers
             var playersModel = new List<PlayerViewModel>();
             foreach (var player in players)
             {
-                foreach (var playesSeason in player.Team.Seasons)
+                foreach (var seasonPlayer in player.Seasons)
                 {
-                    if (playesSeason.Id.Equals(season))
+                    if (seasonPlayer.Id.Equals(season))
                     {
                         playersModel.Add(Mapper.Map<PlayerViewModel>(player));
                     }
@@ -330,6 +352,7 @@ namespace NewLeague.Domain.Controllers
         public IEnumerable<PlayerViewModel> GetScorers(int season)
         {
             var goals = db.Goals.Where(x => x.SeasonId.Equals(season)).ToList();
+            var assists = db.Assists.Where(x => x.SeasonId.Equals(season)).ToList();
             var players = db.Players.ToList();
             var plsyerList = new List<Player>()
             {
@@ -347,6 +370,13 @@ namespace NewLeague.Domain.Controllers
                     if ((player.Id).Equals(goal.PlayerId))
                     {
                         player.Goals += 1;
+                    }
+                }
+                foreach (var assist in assists)
+                {
+                    if ((player.Id).Equals(assist.PlayerId))
+                    {
+                        player.Assists += 1;
                     }
                 }
             }
@@ -381,11 +411,72 @@ namespace NewLeague.Domain.Controllers
             }
             foreach (var match in matches)
             {
+                if (match.HomeGoalkeeperId == 0)
+                    match.HomeGoalkeeperId = null;
+                if (match.AwayGoalkeeperId == 0)
+                    match.AwayGoalkeeperId = null;
+                if (match.OutstandingId == 0)
+                    match.OutstandingId = null;
                 var currentMatch = db.Matches.Find(match.Id);
+                if (match.Played==true &&currentMatch.Played==false)
+                {
+                    SetMatchAttendance(match.Id);
+                }
                 //currentMatch.Goals = db.Goals.Where(x => x.MatchId.Equals(currentMatch.Id));
                 db.Entry(currentMatch).CurrentValues.SetValues(match);
                 //db.Entry(match).State = EntityState.Modified;
 
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException ex)
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+                }
+            }
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+        public void SetMatchAttendance(int matchId){
+            var match = db.Matches.FirstOrDefault(x=>x.Id==matchId);
+            var players = GetSeasonPlayers(match.SeasonId).Where(x => x.TeamId == match.HomeId || x.TeamId == match.AwayId);
+            var attendances = Mapper.Map<IEnumerable<Attendance>>(players);
+            foreach (var attend in attendances)
+            {
+                attend.MatchId = matchId;
+                attend.SeasonId = match.SeasonId;
+            }
+            UpdateAttendance(attendances);
+
+        }
+        [HttpPost]
+        public HttpResponseMessage UpdateAttendance([FromBody]IEnumerable<Attendance> attendances)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            var matchId=attendances.ElementAt(0).MatchId;
+            db.Attendances.RemoveRange(db.Attendances.Where(x => x.MatchId == matchId));
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+            foreach (var attendance in attendances)
+            {
+                var currentAttendance = db.Attendances.Find(attendance.Id);
+                if (currentAttendance != null)
+                {
+                    db.Entry(currentAttendance).CurrentValues.SetValues(attendance);
+                }
+                else
+                {
+                    db.Attendances.Add(attendance);
+                }
                 try
                 {
                     db.SaveChanges();
@@ -442,13 +533,6 @@ namespace NewLeague.Domain.Controllers
             var match = new Match();
             return match;
         }
-        [HttpGet]
-        public IEnumerable<Player> GetMatchPlayers(int id)
-        {
-            var match = db.Matches.Where(x => x.Id.Equals(id)).FirstOrDefault();
-            var players = db.Players.Where(x => x.TeamId.Equals(match.HomeId) || x.TeamId.Equals(match.AwayId));
-            return players;
-        }
 
         [HttpPost]
         public HttpResponseMessage EditWeekTeams([FromBody]IEnumerable<Match> matches)
@@ -461,6 +545,12 @@ namespace NewLeague.Domain.Controllers
             var seasonId = matches.FirstOrDefault().SeasonId;
             foreach (var match in matches)
             {
+                if (match.AwayGoalkeeperId == 0)
+                    match.AwayGoalkeeperId = null;
+                if (match.HomeGoalkeeperId == 0)
+                    match.HomeGoalkeeperId = null;
+                if (match.OutstandingId == 0)
+                    match.OutstandingId = null;
                 match.Home = db.Teams.Where(x => x.Id.Equals(match.HomeId)).FirstOrDefault();
                 match.Away = db.Teams.Where(x => x.Id.Equals(match.AwayId)).FirstOrDefault();
                 match.WeekId = weekId;

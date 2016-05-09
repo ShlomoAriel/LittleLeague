@@ -5,7 +5,7 @@
     _data.scorers = [];
     _data.nextWeek = [];
     _data.getSeasonTable = function (seasonId) {
-        var promise = $http.get('http://domain.redlionleague.com//api/Match/GetStandings', {
+        var promise = $http.get('http://localhost:55506///api/Match/GetStandings', {
             params: { id: seasonId }
         }).success(function (data) {
             angular.copy(data, _data.table);

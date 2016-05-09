@@ -5,13 +5,14 @@
     _data.seasonId = 0;
     _data.seasonsMatches = [];
     _data.teams = [];
+    _data.match = {};
     _data.weeks = [];
     _data.nextWeek = [];
     _data.nextWeekNumber = 0;
     _data.weekMatches = [];
     _data.getSeasonMatches = function (seasonId) {
         var promise =
-        $http.get('http://domain.redlionleague.com//api/Match/GetMatchesBySeason', {
+        $http.get('http://localhost:55506///api/Match/GetMatchesBySeason', {
             params: { seasonId: seasonId }
         }).then(function (response) {
             angular.copy(response.data, _data.seasonsMatches);
@@ -26,7 +27,7 @@
         _data.nextWeekId = id;
     }
     _data.getSeasonWeeks = function (seasonId) {
-        $http.get('http://domain.redlionleague.com//api/Match/GetWeeksBySeason', {
+        $http.get('http://localhost:55506///api/Match/GetWeeksBySeason', {
             params: { seasonId: seasonId }
         }).success(function (data) {
             //_data.weeks = data;
@@ -34,7 +35,7 @@
         });
     };
     _data.getSeasonTeams = function (seasonId) {
-        $http.get('http://domain.redlionleague.com//api/Match/GetTeamsBySeason', {
+        $http.get('http://localhost:55506///api/Match/GetTeamsBySeason', {
             params: { seasonId: seasonId }
         }).success(function (data) {
             //_data.teams = data;
@@ -54,11 +55,19 @@
         }
     }
     _data.getMatchByWeek = function (seasonId, weekId) {
-        $http.get('http://domain.redlionleague.com//api/Match/GetMatchesByWeek', {
+        $http.get('http://localhost:55506//api/Match/GetMatchesByWeek', {
             params: { week: weekId, seasonId: seasonId }
         }).success(function (data) {
             //_data.teams = data;
             angular.copy(data, _data.weekMatches);
+        });
+    };
+    _data.getMatch = function (matchId) {
+        $http.get('http://localhost:55506///api/Match/GetMatch', {
+            params: { id: matchId }
+        }).success(function (data) {
+            //_data.teams = data;
+            angular.copy(data, _data.match);
         });
     };
 

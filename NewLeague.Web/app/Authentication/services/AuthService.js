@@ -1,7 +1,7 @@
 ﻿'use strict';
 app.factory('authService', ['$http', '$q', 'localStorageService', function ($http, $q, localStorageService) {
 
-    var serviceBase = 'http://domain.redlionleague.com/';
+    var serviceBase = 'http://localhost:55506//';
     var authServiceFactory = {};
 
     var _authentication = {
@@ -29,6 +29,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
     
 
     var _login = function (loginData) {
+        _logOut();
 
         var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
 

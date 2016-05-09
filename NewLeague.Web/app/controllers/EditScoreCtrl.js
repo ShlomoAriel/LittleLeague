@@ -1,4 +1,4 @@
-﻿var EditScoreCtrl = function ($scope, PlayerService, Goals, MatchesService, GoalService, CommonServices, $http, $filter) {
+﻿var EditScoreCtrl = function ($scope, PlayerService, Assists,Goals, MatchesService, GoalService, CommonServices, $http, $filter) {
     $scope.players = PlayerService.seasonPlayers;
     $scope.seasonId = MatchesService.seasonId;
     $scope.matches = MatchesService.seasonsMatches;
@@ -9,6 +9,7 @@
             $scope.season = $scope.seasons[0];
             $scope.getSeasonWeeks();
             PlayerService.getSeasonPlayers(CommonServices.currentSeasonId);
+            GoalService.getSeasonGoals(CommonServices.currentSeasonId);
         }
     });
     $scope.$watchCollection('weeks', function (newValue, oldValue) {
@@ -18,7 +19,7 @@
         }
     });
     $scope.goals = GoalService.goals;
-
+    $scope.assists = GoalService.assists;
     $scope.getweek = function () {
         var weeks = [];
         angular.forEach($scope.matches, function (key, value) {
@@ -28,13 +29,12 @@
         });
         $scope.selectedweek = weeks;
     };
-    //$scope.editWeek = function () {
-    //    var matches = $scope.selectedweek;
-    //    $http.post('http://domain.redlionleague.com//api/Match/EditAWeek', matches);
-    //};
+    $scope.setHomeCleanSheet = function () {
+        var test = this.HomeCleanSheet.Id;
+    }
     $scope.updateweek = function () {
         var matches = $scope.selectedweek;
-        $http.post('http://domain.redlionleague.com//api/Match/UpdateWeek', matches)
+        $http.post('http://localhost:55506///api/Match/UpdateWeek', matches)
         .success(function () {
             $scope.savedAlert();
         });;
@@ -49,6 +49,28 @@
         Goals.save(goal, function (data) {
             if(data!=null)
                 $scope.goals.push(data);
+        });
+    };
+    $scope.addHomeAssist = function () {
+        var match = this.fixture;
+        var assist = {};
+        assist.MatchId = match.Id;
+        assist.PlayerId = this.homeAssist.Id;
+        assist.SeasonId = match.SeasonId;
+        Assists.save(assist, function (data) {
+            if (data != null)
+                $scope.assists.push(data);
+        });
+    };
+    $scope.addAwayAssist = function () {
+        var match = this.fixture;
+        var assist = {};
+        assist.MatchId = match.Id;
+        assist.PlayerId = this.awayAssist.Id;
+        assist.SeasonId = match.SeasonId;
+        Assists.save(assist, function (data) {
+            if (data != null)
+                $scope.assists.push(data);
         });
     };
     $scope.addAwayScorer = function () {
