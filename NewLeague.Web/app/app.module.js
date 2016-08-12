@@ -64,6 +64,12 @@ app.factory("Attendance", function ($resource) {
         delete: { url: "http://beta.redlionleague.com///api/Attendance/DeleteAttendance", method: "DELETE" }
     });
 });
+app.factory("Assists", function ($resource) {
+    return $resource("http://domain.redlionleague.com//api/Assist/:id", { id: "@id" }, {
+        update: { method: "PUT" },
+        delete: { url: "http://domain.redlionleague.com//api/Goal/DeleteAssist", method: "DELETE" }
+    });
+});
 app.factory("Matches", function ($resource) {
     return $resource("http://beta.redlionleague.com///api/Match/:id", { id: "@id" }, {
         update: { method: "PUT" },

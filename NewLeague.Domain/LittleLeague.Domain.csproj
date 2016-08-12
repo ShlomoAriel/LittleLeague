@@ -426,15 +426,15 @@
       <DependentUpon>201605130832408_outstanding4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AttendanceViewModel.cs" />
-    <Compile Include="Models\Attendance.cs" />
-    <Compile Include="Models\AuthContext.cs" />
-    <Compile Include="Models\AuthRepository.cs" />
-    <Compile Include="Models\OutstandingViewModel.cs" />
-    <Compile Include="Models\CleanSheet.cs" />
-    <Compile Include="Models\File.cs" />
     <Compile Include="Models\Assist.cs" />
     <Compile Include="Models\AssistViewModel.cs" />
+    <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\AttendanceViewModel.cs" />
+    <Compile Include="Models\AuthContext.cs" />
+    <Compile Include="Models\AuthRepository.cs" />
+    <Compile Include="Models\CleanSheet.cs" />
+    <Compile Include="Models\CleanSheetViewModel.cs" />
+    <Compile Include="Models\File.cs" />
     <Compile Include="Models\GoalViewModel.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\IdentityUser.cs" />
@@ -443,8 +443,8 @@
     <Compile Include="Models\MatchViewModel.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\NewLeague\DomainContext.cs" />
-    <Compile Include="Models\CleanSheetViewModel.cs" />
     <Compile Include="Models\Outstanding.cs" />
+    <Compile Include="Models\OutstandingViewModel.cs" />
     <Compile Include="Models\PlayerRegistrationModel.cs" />
     <Compile Include="Models\PlayerViewModel.cs" />
     <Compile Include="Models\LeagueChampViewModel.cs" />
@@ -730,7 +730,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55506</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

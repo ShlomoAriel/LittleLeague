@@ -943,7 +943,9 @@
     <Content Include="Scripts\ui-router-tabs.js" />
     <Content Include="templates\terms\schedule.html" />
     <Content Include="templates\terms\structure.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

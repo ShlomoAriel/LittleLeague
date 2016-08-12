@@ -35,25 +35,25 @@
         </div>
         <div class="row form-group">
             <div class="col-md-8 col-xs-12">
-                <div class="col-md-6 col-xs-12">
-                    <label class="">כובש בית</label>
-                    <div class="">
-                        <select ng-model="homeScorer" ng-options="player as player.Name for player in players | homePlayers:fixture" class="form-control col-xs-9"></select>
-                        <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addHomeScorer()">
-                            <i class="glyphicon glyphicon-plus"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xs-12">
+        <div class="col-md-6 col-xs-12">
+            <label class="">כובש בית</label>
+            <div class="">
+                <select ng-model="homeScorer" ng-options="player as player.Name for player in players | homePlayers:fixture" class="form-control col-xs-9"></select>
+                <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addHomeScorer()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
                     <label class="">כובש חוץ</label>
-                    <div class="">
-                        <select ng-model="awayScorer" ng-options="player as player.Name for player in players | awayPlayers:fixture" class="form-control col-xs-9"></select>
-                        <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addAwayScorer()">
-                            <i class="glyphicon glyphicon-plus"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="row form-group">
+            <div class="">
+                <select ng-model="awayScorer" ng-options="player as player.Name for player in players | awayPlayers:fixture" class="form-control col-xs-9"></select>
+                <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addAwayScorer()">
+                    <i class="glyphicon glyphicon-plus"></i>
+                </a>
+            </div>
+        </div>
+        <div class="row form-group">
                     <div class="col-md-6 col-xs-12">
                         <span class="scorer" id="goal_{{goal.Id}}" ng-repeat="goal in goals|homeScorers:fixture">
                             {{goal.Player.Name}}<span class="delete-goal" ng-click="deleteGoal()"><i class="glyphicon glyphicon-remove"></i></span>
@@ -61,10 +61,10 @@
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <span class="scorer" id="goal_{{goal.Id}}" ng-repeat="goal in goals|awayScorers:fixture">
-                            {{goal.Player.Name}}<span class="delete-goal" ng-click="deleteGoal()"><i class="glyphicon glyphicon-remove"></i></span>
-                        </span>
-                    </div>
-                </div>
+                {{goal.Player.Name}}<span class="delete-goal" ng-click="deleteGoal()"><i class="glyphicon glyphicon-remove"></i></span>
+            </span>
+        </div>
+    </div>
                 <div class="col-md-6 col-xs-12">
                     <label class="">מבשל בית</label>
                     <div class="">
@@ -127,6 +127,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="col-md-12">
     <a class="btn btn-info btn-flat" id="add-fixture" ng-click="updateweek()">
