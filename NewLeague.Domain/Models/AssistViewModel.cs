@@ -5,7 +5,7 @@ using System.Web;
 
 namespace NewLeague.Models
 {
-    public class GoalViewModel
+    public class AssistViewModel
     {
         public int Id { get; set; }
         public int PlayerId { get; set; }
