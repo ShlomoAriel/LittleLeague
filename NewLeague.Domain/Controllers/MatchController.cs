@@ -88,6 +88,15 @@ namespace NewLeague.Domain.Controllers
         }
 
         [HttpGet]
+        public HttpResponseMessage GetGoalssBySeason(int seasonId)
+        {
+            var goals = db.Goals.ToList().Where(x => x.SeasonId.Equals(seasonId));
+            var goalsViewModel = Mapper.Map<IEnumerable<GoalViewModel>>(goals);
+
+            return Request.CreateResponse(goalsViewModel);
+        }
+
+        [HttpGet]
         public HttpResponseMessage GetPositions()
         {
             var positions = db.Positions.ToList();

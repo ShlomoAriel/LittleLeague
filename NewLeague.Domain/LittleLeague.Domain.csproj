@@ -233,8 +233,10 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AssistsController.cs" />
     <Compile Include="Controllers\GoalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeaguesController.cs" />
     <Compile Include="Controllers\LogoesController.cs" />
     <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
@@ -317,10 +319,20 @@
     <Compile Include="Migrations\201605031320171_isadmin.Designer.cs">
       <DependentUpon>201605031320171_isadmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605060506467_assists.cs" />
+    <Compile Include="Migrations\201605060506467_assists.Designer.cs">
+      <DependentUpon>201605060506467_assists.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606101157484_leagues.cs" />
+    <Compile Include="Migrations\201606101157484_leagues.Designer.cs">
+      <DependentUpon>201606101157484_leagues.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuthContext.cs" />
     <Compile Include="Models\AuthRepository.cs" />
     <Compile Include="Models\File.cs" />
+    <Compile Include="Models\Assist.cs" />
+    <Compile Include="Models\AssistViewModel.cs" />
     <Compile Include="Models\GoalViewModel.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\IdentityUser.cs" />
@@ -334,8 +346,10 @@
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PositionViewModel.cs" />
     <Compile Include="Models\Position.cs" />
+    <Compile Include="Models\League.cs" />
     <Compile Include="Models\SeasonMatchesViewModel.cs" />
     <Compile Include="Models\SeasonPlayer.cs" />
+    <Compile Include="Models\LeagueViewModel.cs" />
     <Compile Include="Models\SeasonViewModel.cs" />
     <Compile Include="Models\Season.cs" />
     <Compile Include="Models\SeasonTeam.cs" />
@@ -525,6 +539,12 @@
     <EmbeddedResource Include="Migrations\201605031320171_isadmin.resx">
       <DependentUpon>201605031320171_isadmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605060506467_assists.resx">
+      <DependentUpon>201605060506467_assists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606101157484_leagues.resx">
+      <DependentUpon>201606101157484_leagues.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -540,7 +560,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55506</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

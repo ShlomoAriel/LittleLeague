@@ -34,6 +34,10 @@ namespace NewLeague.Domain.Models.NewLeague
 
         public DbSet<Position> Positions { get; set; }
 
+        public System.Data.Entity.DbSet<Assist> Assists { get; set; }
+
+        public System.Data.Entity.DbSet<League> Leagues { get; set; }
+
        
 
     }

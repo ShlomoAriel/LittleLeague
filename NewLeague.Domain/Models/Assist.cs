@@ -5,13 +5,14 @@ using System.Web;
 
 namespace NewLeague.Models
 {
-    public class GoalViewModel
+    public class Assist
     {
         public int Id { get; set; }
         public int PlayerId { get; set; }
-        public virtual PlayerViewModel Player { get; set; }
+        public virtual Player Player { get; set; }
         public int MatchId { get; set; }
-        public virtual MatchViewModel Match { get; set; }
+        public virtual Match Match { get; set; }
+
         public int SeasonId { get; set; }
     }
 }
