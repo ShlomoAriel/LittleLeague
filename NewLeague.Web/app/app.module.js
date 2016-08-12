@@ -37,6 +37,12 @@ app.factory("Goals", function ($resource) {
         delete: { url: "http://domain.redlionleague.com//api/Goal/DeleteGoal", method: "DELETE" }
     });
 });
+app.factory("Assists", function ($resource) {
+    return $resource("http://domain.redlionleague.com//api/Assist/:id", { id: "@id" }, {
+        update: { method: "PUT" },
+        delete: { url: "http://domain.redlionleague.com//api/Goal/DeleteAssist", method: "DELETE" }
+    });
+});
 app.factory("Matches", function ($resource) {
     return $resource("http://domain.redlionleague.com//api/Match/:id", { id: "@id" }, {
         update: { method: "PUT" },
@@ -92,6 +98,40 @@ app.filter("awayPlayers", function () {
         }
         else if (match == null || match.length === 0) {
             return players;
+        }
+        return out;
+    };
+});
+app.filter("awayScorers", function () {
+    return function (goals, match) {
+        var out = [];
+
+        if (match && goals) {
+            for (var x = 0; x < goals.length; x++) {
+                if (goals[x].Player.TeamId === match.AwayId && goals[x].MatchId === match.Id)
+                    out.push(goals[x]);
+            }
+            return out;
+        }
+        else if (match == null || match.length === 0) {
+            return goals;
+        }
+        return out;
+    };
+});
+app.filter("homeScorers", function () {
+    return function (goals, match) {
+        var out = [];
+
+        if (match && goals) {
+            for (var x = 0; x < goals.length; x++) {
+                if (goals[x].Player.TeamId === match.HomeId && goals[x].MatchId === match.Id)
+                    out.push(goals[x]);
+            }
+            return out;
+        }
+        else if (match == null || match.length === 0) {
+            return goals;
         }
         return out;
     };

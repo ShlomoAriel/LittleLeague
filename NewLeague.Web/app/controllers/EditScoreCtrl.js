@@ -9,6 +9,7 @@
             $scope.season = $scope.seasons[0];
             $scope.getSeasonWeeks();
             PlayerService.getSeasonPlayers(CommonServices.currentSeasonId);
+            GoalService.getSeasonGoals(CommonServices.currentSeasonId);
         }
     });
     $scope.$watchCollection('weeks', function (newValue, oldValue) {
@@ -17,8 +18,7 @@
             $scope.getweek();
         }
     });
-    $scope.goals = GoalService.goals;
-
+    $scope.goals = GoalService.seasonGoals;
     $scope.getweek = function () {
         var weeks = [];
         angular.forEach($scope.matches, function (key, value) {
@@ -28,10 +28,6 @@
         });
         $scope.selectedweek = weeks;
     };
-    //$scope.editWeek = function () {
-    //    var matches = $scope.selectedweek;
-    //    $http.post('http://domain.redlionleague.com//api/Match/EditAWeek', matches);
-    //};
     $scope.updateweek = function () {
         var matches = $scope.selectedweek;
         $http.post('http://domain.redlionleague.com//api/Match/UpdateWeek', matches)

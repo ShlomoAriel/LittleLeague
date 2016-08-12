@@ -42,9 +42,16 @@
             </div>
         </div>
         <div class="row form-group">
-            <span class="scorer" id="goal_{{goal.Id}}" ng-repeat="goal in goals|filter:{MatchId:fixture.Id}:true">
-                {{goal.Player.Name}}<span class="delete-goal" ng-click="deleteGoal()"><i class="glyphicon glyphicon-remove"></i></span>
-            </span>
+            <div class="col-md-6 col-xs-12">
+                <span class="scorer" id="goal_{{goal.Id}}" ng-repeat="goal in goals|filter:{TeamId:fixture.Player.TeamId}:true">
+                    {{goal.Player.Name}}<span class="delete-goal" ng-click="deleteGoal()"><i class="glyphicon glyphicon-remove"></i></span>
+                </span>
+            </div>
+            <div class="col-md-6 col-xs-12">
+                <span class="scorer" id="goal_{{goal.Id}}" ng-repeat="goal in goals|filter:{MatchId:fixture.Id}:true">
+                    {{goal.Player.Name}}<span class="delete-goal" ng-click="deleteGoal()"><i class="glyphicon glyphicon-remove"></i></span>
+                </span>
+            </div>
         </div>
     </div>
 </div>
