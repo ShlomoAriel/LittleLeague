@@ -8,9 +8,11 @@
     _data.player = {};
     _data.positions = [];
     _data.scorers = [];
+    _data.matchAttendance = [];
+    _data.matchPlayers = [];
 
     _data.getSeasonPlayers = function (seasonId) {
-        var promise = $http.get('http://domain.redlionleague.com//api/Match/GetSeasonPlayers', {
+        var promise = $http.get('http://localhost:55506///api/Match/GetSeasonPlayers', {
             params: { season: seasonId }
         }).success(function (data) {
             //_data.players = data;
@@ -19,7 +21,7 @@
         return promise;
     };
     _data.getTeamPlayers = function (teamId) {
-        var promise = $http.get('http://domain.redlionleague.com//api/Match/GetTeamPlayers', {
+        var promise = $http.get('http://localhost:55506///api/Match/GetTeamPlayers', {
             params: { teamId: teamId }
         }).success(function (data) {
             //_data.players = data;
@@ -27,11 +29,29 @@
         });
         return promise;
     };
+
+    _data.getMatchPlayers = function (matchId) {
+        var promise = $http.get('http://localhost:55506///api/Match/GetMatchPlayers', {
+            params: { id: matchId }
+        }).success(function (data) {
+            angular.copy(data, _data.matchPlayers);
+        });
+        return promise;
+    };
+    _data.getPlayersAttendance = function (teamId,seasonId) {
+        var promise = $http.get('http://localhost:55506///api/Match/GetPlayersAttendance', {
+            params: { teamId: teamId, seasonId: seasonId }
+        }).success(function (data) {
+            angular.copy(data, _data.matchAttendance);
+        });
+        return promise;
+    };
+
     _data.addPlayerToSeason = function (seasonId, playerId) {
         var seasonPlayer = {};
         seasonPlayer.SeasonId = seasonId;
         seasonPlayer.PlayerId = playerId;
-        var promise = $http.post('http://domain.redlionleague.com//api/Match/AddPlayerToSeason', seasonPlayer).success(function (data) {
+        var promise = $http.post('http://localhost:55506///api/Match/AddPlayerToSeason', seasonPlayer).success(function (data) {
         });
         return promise;
     };
@@ -39,7 +59,7 @@
         var seasonPlayer = {};
         seasonPlayer.SeasonId = seasonId;
         seasonPlayer.PlayerId = playerId;
-        var promise = $http.post('http://domain.redlionleague.com//api/Match/DeletePlayerFromSeason', seasonPlayer).success(function (data) {
+        var promise = $http.post('http://localhost:55506///api/Match/DeletePlayerFromSeason', seasonPlayer).success(function (data) {
         });
         return promise;
     }
@@ -47,7 +67,7 @@
         var seasonTeam = {};
         seasonTeam.SeasonId = seasonId;
         seasonTeam.TeamId = teamId;
-        var promise = $http.post('http://domain.redlionleague.com//api/Match/GetTeamSeasonPlayers', seasonTeam).success(function (data) {
+        var promise = $http.post('http://localhost:55506///api/Match/GetTeamSeasonPlayers', seasonTeam).success(function (data) {
             //_data.players = data;
             angular.copy(data, _data.teamSeasonPlayers);
         });
@@ -65,18 +85,17 @@
         });
     };
     _data.getPositions = function (playerId) {
-        var promise = $http.get('http://domain.redlionleague.com//api/Match/GetPositions')
+        var promise = $http.get('http://localhost:55506///api/Match/GetPositions')
             .success(function (data) {
                 angular.copy(data, _data.positions);
             });
     }
     _data.getSeasonScorers = function (seasonId) {
-        var promise = $http.get('http://domain.redlionleague.com//api/Match/GetScorers', {
+        var promise = $http.get('http://localhost:55506///api/Match/GetScorers', {
             params: { season: seasonId }
         }).success(function (data) {
             _data.seasonId = seasonId;
             angular.copy(data, _data.scorers);
-            //CommonServices.state.loading = false;
         });
         return promise;
     };

@@ -1,4 +1,4 @@
-﻿app.service('GoalService', function (Goals,Assists) {
+﻿app.service('GoalService', function ($http,Goals,Assists) {
     var _data = this;
     _data.goals = [];
     _data.seasonGoals = [];
@@ -11,7 +11,7 @@
         });
     };
     _data.getSeasonGoals = function (seasonId) {
-        $http.get('http://domain.redlionleague.com//api/Match/GetGoalsBySeason', {
+        $http.get('http://localhost:55506///api/Match/GetGoalsBySeason', {
             params: { seasonId: seasonId }
         }).success(function (data) {
             angular.copy(data, _data.seasonGoals);
@@ -23,7 +23,7 @@
         });
     };
     _data.getSeasonAssists = function (seasonId) {
-        $http.get('http://domain.redlionleague.com//api/Match/GetAssistsBySeason', {
+        $http.get('http://localhost:55506///api/Match/GetAssistsBySeason', {
             params: { seasonId: seasonId }
         }).success(function (data) {
             angular.copy(data, _data.seasonAssists);

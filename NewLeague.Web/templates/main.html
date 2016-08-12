@@ -22,23 +22,23 @@
         </li>
     </ul>
 </div>
-<div class="container hidden-xs col-lg-12 col-sm-12">
+<div class="container hidden-xs col-lg-12 col-sm-12 tabs tabs-style-fillup">
+    <nav>
     <tabset>
+
         <tab ng-repeat="t in tabs"
              heading="{{t.heading}}"
              select="go(t.route)"
              active="t.active">
         </tab>
+
     </tabset>
+    </nav>
 </div>
 <div class="container container-wrapper col-lg-12 col-sm-12">
-    <h1>Hello</h1>
     <div ui-view class="wrapper">
     </div>
 </div>
-<!--<div class="col-lg-12 col-sm-12">
-    <div class="fb-page" data-href="https://www.facebook.com/redlionleague/" data-height="450" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/redlionleague/"><a href="https://www.facebook.com/redlionleague/">Red Lion League</a></blockquote></div></div>
-</div>-->
 <div class="col-sm-12">
     <ul id="horizontal-list">
         <li><a href="#/main/registration">הרשמה</a></li>
@@ -60,4 +60,3 @@
         </tab>
     </tabset>
 </div>
-

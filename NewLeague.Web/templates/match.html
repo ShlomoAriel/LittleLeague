@@ -1,0 +1,30 @@
+﻿<div id="match-wrapper">
+    <div class="container">
+        <div class="col-md-4">
+            <h1></h1>
+        </div>
+        <div class="col-md-4">
+            <h1>{{fixture.Away.Name}} {{fixture.AwayGoals}} - {{fixture.HomeGoals}} {{fixture.Home.Name}}</h1>
+        </div>
+        <div class="col-md-4">
+            <h1></h1>
+        </div>
+    </div>
+
+    <div class="row" id="matchId_{{fixture.Id}}">
+        <div class="col-md-5 col-xs-5">
+            <label class="col-md-12" ng-repeat="role in matchPlayers| filter: {TeamId:match.HomeId}: true">
+                <input type="checkbox" data-checklist-model="users" data-checklist-value="role"> {{role.Name}}
+            </label>
+        </div>
+        <div class="col-md-2 col-xs-2"></div>
+        <div class="col-md-5 col-xs-5">
+            <label class="col-md-12" ng-repeat="role in matchPlayers| filter: {TeamId:match.AwayId}: true">
+                <input type="checkbox" data-checklist-model="users" data-checklist-value="role"> {{role.Name}}
+            </label>
+        </div>
+    </div>
+</div>
+<a ng-click="test()">
+    עדכון
+</a>

@@ -36,7 +36,7 @@ namespace NewLeague.Domain.Models.NewLeague
 
         public System.Data.Entity.DbSet<Assist> Assists { get; set; }
 
-        public System.Data.Entity.DbSet<League> Leagues { get; set; }
+        public System.Data.Entity.DbSet<Attendance> Attendances { get; set; }
 
        
 

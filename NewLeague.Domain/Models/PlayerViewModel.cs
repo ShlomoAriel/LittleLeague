@@ -13,6 +13,7 @@ namespace NewLeague.Models
         public int TeamId { get; set; }
         public virtual TeamViewModel Team { get; set; }
         public int Goals { get; set; }
+        public int Assists { get; set; }
         public int PositionId { get; set; }
         public virtual PositionViewModel Position { get; set; }
         public string Email { get; set; }

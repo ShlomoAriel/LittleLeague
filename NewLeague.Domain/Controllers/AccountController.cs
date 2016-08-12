@@ -138,7 +138,7 @@ namespace NewLeague.Domain.Controllers
             if (!identity.IsAuthenticated)
                 throw new HttpException(401, "Auth Failed");
             var teamId = claims.FirstOrDefault(x => x.Type.Equals("TeamId")).Value;
-            if (teamId == null)
+            if (teamId == "")
                 return true;
             throw new HttpException(401, "Auth Failed");
         }

@@ -27,7 +27,6 @@
                 <!--{{team.N
                 ame}}-->
             </span>
-            </span>
             <a class="btn btn-transparent btn-flat" id="add-fixture" ng-click="nextWeek()">
                 <i class="glyphicon glyphicon-arrow-left"></i>
             </a>
@@ -55,7 +54,7 @@
 
                     </a>
                     <div class="col-md-2 col-xs-3"><a ng-click="go('main.team',{Id:fixture.Away.Id})">{{fixture.Away.Name}}</a></div>
-                    <a class="col-md-1 col-xs-2" ng-click="openScorers(fixture.Id)"><i class="glyphicon glyphicon-plus"></i> </a>
+                    <a ng-click="go('main.match',{Id:fixture.Id})"><i class="glyphicon glyphicon-plus"></i> </a>
                 </div>
                 <div class="row scorers" id="matchId_{{fixture.Id}}">
                     <div class="col-md-3 hidden-xs"></div>

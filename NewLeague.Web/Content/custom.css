@@ -16,12 +16,17 @@
 center a {
     color: transparent !important;
 }
-
+.checkbox-wrapper{
+    padding:0px;
+    margin:0px;
+}
 body {
     font-family: OpenSansHebrewBold;
     direction: rtl;
 }
-
+#match-wrapper{
+    text-align:center;
+}
 .date-custom {
     margin-top: 34px;
 }
@@ -186,10 +191,12 @@ ul#horizontal-list li {
     text-align: center;
 }
 
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus, .dd-holder {
+/*.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus, .dd-holder {
     background: #EEEEEE;
+}*/
+.nav-tabs {
+    border-bottom: none;
 }
-
 .dd-holder {
     border-right: 1px solid#ddd;
     padding-top: 15px;
@@ -344,10 +351,22 @@ header {
     background-color: white;
 }
 
-.nav-tabs > li.active > a {
+/*.nav-tabs > li.active > a {
     background: #EEEEEE;
     box-shadow: inset 0 2px 0 #f05451;
     border-radius: 0;
+}*/
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+    color: initial;
+  cursor: default;
+  background-color: initial;
+  border: initial;
+  border-bottom-color: transparent;
+}
+.nav-tabs > li > a:hover{
+    background-color:transparent;
 }
 
 

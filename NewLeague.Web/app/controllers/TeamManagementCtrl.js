@@ -1,18 +1,14 @@
 ﻿var TeamManagementCtrl = function ($scope, authService, Teams, $state, $stateParams, Players, TableService, CommonServices, PlayerService) {
     $scope.getCurrentUserTeamId = function () {
-        
         authService.getTeamId().then(function (response) {
             if (response.data == '') {  //flags admin
-                $scope.teamId =$stateParams.Id
+                $scope.teamId = $stateParams.Id
             }
             else {
                 $scope.teamId = response.data;
             }
-            
         });
     }
-    $scope.getCurrentUserTeamId();
-    //$scope.teamId = $stateParams.Id;
     $scope.$watch('teamId', function () {
         if (!angular.isUndefined($scope.teamId)) {
             $scope.updateSeasonInfo();
@@ -42,17 +38,13 @@
         if (TableService.table.length === 0) {
             TableService.getSeasonTable(CommonServices.currentSeasonId);
         }
-        if (PlayerService.teamPlayers.length === 0) {
-            PlayerService.getTeamPlayers($scope.teamId);
-        }
+        PlayerService.getTeamPlayers($scope.teamId);
         if (PlayerService.positions.length === 0) {
             PlayerService.getPositions();
         }
-        if (PlayerService.teamSeasonPlayers.length === 0) {
-            PlayerService.getTeamSeasonPlayers(CommonServices.currentSeasonId, $scope.teamId).then(function () {
-                $scope.filterPlayers();
-            });
-        }
+        PlayerService.getTeamSeasonPlayers(CommonServices.currentSeasonId, $scope.teamId).then(function () {
+            $scope.filterPlayers();
+        });
     };
     $scope.team = {};
 
@@ -94,7 +86,7 @@
         }
     }
 
-
+    $scope.getCurrentUserTeamId();
 
 
 };
