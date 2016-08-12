@@ -1,0 +1,42 @@
+﻿<div class="row dd-holder">
+    <div class=" row col-md-3">
+        <!--<select ng-model="season" ng-options="season.Id as season.Name for season in seasons" class="form-control" ng-change="getScorers()"></select>-->
+        <select ng-model="season" ng-options="product as product.Name for product in seasons | orderBy:['-Priority']" class="form-control" ng-change="getLeagueChamp()"></select>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="applewrap dark">
+        <div id="table-head">
+            כובשים {{season.Name}}
+        </div>
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>שם</th>
+                    <th>קבוצה</th>
+                    <th>נוכחות</th>
+                    <th>שערים</th>
+                    <th>בישולים</th>
+                    <th>מצטיין</th>
+                    <th>שער נקי</th>
+                    <th>סך הכל</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <tr ng-repeat="item in leagueChamp | orderBy:'-Goals*2+Assists+Attendances+Outstanding*3+CleanSheets*3'" id="item_{{item.Id}}">
+                    <td>{{$index+1}}</td>
+                    <td><a ng-click="go('main.player',{Id:item.Id})">{{item.Name}}</a></td>
+                    <td><a ng-click="go('main.team',{Id:item.Team.Id})">{{item.Team.Name}}</a></td>
+                    <td>{{item.Attendances}}</td>
+                    <td>{{item.Goals}}</td>
+                    <td>{{item.Assists}}</td>
+                    <td>{{item.Outstanding}}</td>
+                    <td>{{item.CleanSheets}}</td>
+                    <td>{{item.Goals*2+item.Attendances+item.Assists+item.Outstanding*3+item.CleanSheets*3}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

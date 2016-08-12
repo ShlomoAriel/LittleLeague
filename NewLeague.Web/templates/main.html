@@ -22,10 +22,9 @@
         </li>
     </ul>
 </div>
-<div class="container hidden-xs col-lg-12 col-sm-12 tabs tabs-style-fillup">
+<div class="container hidden-xs tabs tabs-style-linebox">
     <nav>
         <tabset>
-
             <tab ng-repeat="t in tabs"
                  heading="{{t.heading}}"
                  select="go(t.route)"
@@ -35,7 +34,7 @@
         </tabset>
     </nav>
 </div>
-<div class="container container-wrapper col-lg-12 col-sm-12">
+<div class="container container-wrapper">
     <div ui-view class="wrapper">
     </div>
 </div>

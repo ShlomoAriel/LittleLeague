@@ -72,12 +72,14 @@
     <Content Include="app\controllers\PlayerPageCtrl.js" />
     <Content Include="app\controllers\SeasonCtrl.js" />
     <Content Include="app\Authentication\controllers\SignupController.js" />
+    <Content Include="app\controllers\LeagueChampCtrl.js" />
     <Content Include="app\controllers\TeamCtrl.js" />
     <Content Include="app\controllers\TeamManagementCtrl.js" />
     <Content Include="app\controllers\TeamPageCtrl.js" />
     <Content Include="app\Authentication\services\AuthInterceptorService.js" />
     <Content Include="app\Authentication\services\AuthService.js" />
     <Content Include="app\services\CommonServices.js" />
+    <Content Include="app\services\LeagueChampService.js" />
     <Content Include="app\services\GoalService.js" />
     <Content Include="app\services\MatchesService.js" />
     <Content Include="app\services\PlayerService.js" />
@@ -98,6 +100,9 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\tabs.css" />
     <Content Include="Content\tabstyles.css" />
+    <Content Include="fonts\codropsicons\codropsicons.svg" />
+    <Content Include="fonts\codropsicons\license.txt" />
+    <Content Include="fonts\icomoon\icomoon.svg" />
     <Content Include="Images\bg-page2.jpg" />
     <Content Include="Images\red-lion.png" />
     <Content Include="Scripts\angular-filter.min.js" />
@@ -105,6 +110,7 @@
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\cbpFWTabs.js" />
     <Content Include="Scripts\checklist.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\datetimepicker.js" />
     <Content Include="Scripts\jquery.sticky.js" />
     <Content Include="Scripts\main.js" />
@@ -123,6 +129,14 @@
     <Content Include="fonts\OpenSansHebrew-Light.ttf" />
     <Content Include="fonts\OpenSansHebrew-LightItalic.ttf" />
     <Content Include="fonts\OpenSansHebrew-Regular.ttf" />
+    <Content Include="fonts\codropsicons\codropsicons.eot" />
+    <Content Include="fonts\codropsicons\codropsicons.ttf" />
+    <Content Include="fonts\codropsicons\codropsicons.woff" />
+    <Content Include="fonts\icomoon\.DS_Store" />
+    <Content Include="fonts\icomoon\icomoon.eot" />
+    <Content Include="fonts\icomoon\icomoon.ttf" />
+    <Content Include="fonts\icomoon\icomoon.woff" />
+    <None Include="Properties\PublishProfiles\LittleLeague.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion.Web.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -153,6 +167,7 @@
     <Content Include="templates\registration.html" />
     <Content Include="templates\edit\manageUsers.html" />
     <Content Include="templates\signup.html" />
+    <Content Include="templates\league-champ.html" />
     <Content Include="templates\teamManagment.html" />
     <Content Include="templates\terms\player-conduct.html" />
     <Content Include="templates\terms\rules.html" />

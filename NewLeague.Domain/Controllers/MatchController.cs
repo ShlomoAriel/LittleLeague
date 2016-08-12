@@ -35,12 +35,12 @@ namespace NewLeague.Domain.Controllers
             return Request.CreateResponse(matches);
         }
         [HttpGet]
-        public HttpResponseMessage GetMatchesBySeason(int seasonId)
+        public IEnumerable<MatchViewModel> GetMatchesBySeason(int seasonId)
         {
             var matches = db.Matches.ToList().Where(x => x.SeasonId.Equals(seasonId)).OrderBy(y => y.Date);
             var matchesModel = Mapper.Map<IEnumerable<MatchViewModel>>(matches);
 
-            return Request.CreateResponse(matchesModel);
+            return (matchesModel);
         }
         [HttpGet]
         public HttpResponseMessage GetGoalsBySeason(int seasonId)
@@ -381,6 +381,65 @@ namespace NewLeague.Domain.Controllers
                 }
             }
             playersModel = playersModel.OrderByDescending(x => x.Goals).Take(10).ToList();
+
+            return playersModel;
+        }
+        public IEnumerable<LeagueChampViewModel> GetLeagueChamp(int season)
+        {
+            var goals = db.Goals.Where(x => x.SeasonId.Equals(season)).ToList();
+            var assists = db.Assists.Where(x => x.SeasonId.Equals(season)).ToList();
+            var attendances = db.Attendances.Where(x => x.SeasonId.Equals(season)).ToList();
+            var cleanSheets = db.CleanSheets.Where(x => x.SeasonId.Equals(season)).ToList();
+            var outstanding = db.Outstandings.Where(x => x.SeasonId.Equals(season)).ToList();
+            var players = db.Players.ToList();
+            var plsyerList = new List<Player>()
+            {
+
+            };
+            var playersModel = Mapper.Map<IEnumerable<LeagueChampViewModel>>(players);
+
+
+
+            foreach (var player in playersModel)
+            {
+                //player.Team.Seasons = null;
+                foreach (var goal in goals)
+                {
+                    if ((player.Id).Equals(goal.PlayerId))
+                    {
+                        player.Goals += 1;
+                    }
+                }
+                foreach (var item in attendances)
+                {
+                    if ((player.Id).Equals(item.PlayerId))
+                    {
+                        player.Attendances += 1;
+                    }
+                }
+                foreach (var item in cleanSheets)
+                {
+                    if ((player.Id).Equals(item.PlayerId))
+                    {
+                        player.CleanSheets += 1;
+                    }
+                }
+                foreach (var item in outstanding)
+                {
+                    if ((player.Id).Equals(item.PlayerId))
+                    {
+                        player.Outstanding += 1;
+                    }
+                }
+                foreach (var assist in assists)
+                {
+                    if ((player.Id).Equals(assist.PlayerId))
+                    {
+                        player.Assists += 1;
+                    }
+                }
+            }
+            //playersModel = playersModel.OrderByDescending(x => x.Goals).Take(10).ToList();
 
             return playersModel;
         }

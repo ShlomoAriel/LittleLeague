@@ -13,5 +13,7 @@ namespace NewLeague.Domain.Models
         public int PlayerId { get; set; }
         public virtual PlayerViewModel Player { get; set; }
         public int SeasonId { get; set; }
+        public int MatchId { get; set; }
+        public virtual MatchViewModel Match { get; set; }
     }
 }

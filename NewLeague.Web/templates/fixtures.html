@@ -15,8 +15,8 @@
         </div>
     </div>
 </div>
-
-<div class="applewrap dark">
+<button class="btn btn-primary" ng-click="printFixtures()"><i class=" fa fa-print"></i>הדפסה</button>
+<div class="applewrap dark" id="fixtures" ng-model="wrappedFixtures">
     <div id="table-head">
         <div class="">
             <a class="btn btn-transparent btn-flat" id="add-fixture" ng-click="prevWeek()">
@@ -86,6 +86,7 @@
         </div>
     </div>
 </div>
+
 <div class="applewrap">
     <div id="table-head">
         <div class="">
@@ -121,3 +122,6 @@
         </div>
     </div>
 </div>
+
+
+

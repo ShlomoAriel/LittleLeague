@@ -7,12 +7,13 @@
     _data.allPlayers = [];
     _data.player = {};
     _data.positions = [];
+    _data.leagueChamp = [];
     _data.scorers = [];
     _data.matchAttendance = [];
     _data.matchPlayers = [];
 
     _data.getSeasonPlayers = function (seasonId) {
-        var promise = $http.get('http://localhost:55506///api/Match/GetSeasonPlayers', {
+        var promise = $http.get('http://beta.redlionleague.com///api/Match/GetSeasonPlayers', {
             params: { season: seasonId }
         }).success(function (data) {
             //_data.players = data;
@@ -21,7 +22,7 @@
         return promise;
     };
     _data.getTeamPlayers = function (teamId) {
-        var promise = $http.get('http://localhost:55506///api/Match/GetTeamPlayers', {
+        var promise = $http.get('http://beta.redlionleague.com///api/Match/GetTeamPlayers', {
             params: { teamId: teamId }
         }).success(function (data) {
             //_data.players = data;
@@ -31,7 +32,7 @@
     };
 
     _data.getMatchPlayers = function (matchId) {
-        var promise = $http.get('http://localhost:55506///api/Match/GetMatchPlayers', {
+        var promise = $http.get('http://beta.redlionleague.com///api/Match/GetMatchPlayers', {
             params: { id: matchId }
         }).success(function (data) {
             angular.copy(data, _data.matchPlayers);
@@ -39,7 +40,7 @@
         return promise;
     };
     _data.getPlayersAttendance = function (teamId,seasonId) {
-        var promise = $http.get('http://localhost:55506///api/Match/GetPlayersAttendance', {
+        var promise = $http.get('http://beta.redlionleague.com///api/Match/GetPlayersAttendance', {
             params: { teamId: teamId, seasonId: seasonId }
         }).success(function (data) {
             angular.copy(data, _data.matchAttendance);
@@ -51,7 +52,7 @@
         var seasonPlayer = {};
         seasonPlayer.SeasonId = seasonId;
         seasonPlayer.PlayerId = playerId;
-        var promise = $http.post('http://localhost:55506///api/Match/AddPlayerToSeason', seasonPlayer).success(function (data) {
+        var promise = $http.post('http://beta.redlionleague.com///api/Match/AddPlayerToSeason', seasonPlayer).success(function (data) {
         });
         return promise;
     };
@@ -59,7 +60,7 @@
         var seasonPlayer = {};
         seasonPlayer.SeasonId = seasonId;
         seasonPlayer.PlayerId = playerId;
-        var promise = $http.post('http://localhost:55506///api/Match/DeletePlayerFromSeason', seasonPlayer).success(function (data) {
+        var promise = $http.post('http://beta.redlionleague.com///api/Match/DeletePlayerFromSeason', seasonPlayer).success(function (data) {
         });
         return promise;
     }
@@ -67,7 +68,8 @@
         var seasonTeam = {};
         seasonTeam.SeasonId = seasonId;
         seasonTeam.TeamId = teamId;
-        var promise = $http.post('http://localhost:55506///api/Match/GetTeamSeasonPlayers', seasonTeam).success(function (data) {
+        _data.teamSeasonPlayers = [];
+        var promise = $http.post('http://beta.redlionleague.com///api/Match/GetTeamSeasonPlayers', seasonTeam).success(function (data) {
             //_data.players = data;
             angular.copy(data, _data.teamSeasonPlayers);
         });
@@ -85,17 +87,26 @@
         });
     };
     _data.getPositions = function (playerId) {
-        var promise = $http.get('http://localhost:55506///api/Match/GetPositions')
+        var promise = $http.get('http://beta.redlionleague.com///api/Match/GetPositions')
             .success(function (data) {
                 angular.copy(data, _data.positions);
             });
     }
     _data.getSeasonScorers = function (seasonId) {
-        var promise = $http.get('http://localhost:55506///api/Match/GetScorers', {
+        var promise = $http.get('http://beta.redlionleague.com///api/Match/GetScorers', {
             params: { season: seasonId }
         }).success(function (data) {
             _data.seasonId = seasonId;
             angular.copy(data, _data.scorers);
+        });
+        return promise;
+    };
+    _data.getLeagueChamp = function (seasonId) {
+        var promise = $http.get('http://beta.redlionleague.com///api/Match/GetLeagueChamp', {
+            params: { season: seasonId }
+        }).success(function (data) {
+            _data.seasonId = seasonId;
+            angular.copy(data, _data.leagueChamp);
         });
         return promise;
     };

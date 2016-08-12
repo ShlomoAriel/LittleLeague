@@ -7,11 +7,12 @@
     _data.currentSeasonId = 0;
     _data.seasons = [];  // this is where the shared data would go !!!!!!!controller as
     _data.nextWeekId = 0;
-
+    _data.season = {};
     _data.getSeasons = function () {
         var promise = Seasons.query(function (data) {
             angular.copy(data, _data.seasons);
             _data.currentSeasonId = data[0].Id;
+            _data.season = data[0];
             _data.nextWeekId = data[0].NextWeek;
             var one = TableService.getSeasonTable(_data.currentSeasonId);
             var two = PlayerService.getSeasonScorers(_data.currentSeasonId);

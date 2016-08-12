@@ -11,6 +11,7 @@ namespace NewLeague.Domain
         public static void Register(HttpConfiguration config)
         {
             Mapper.CreateMap<Player, PlayerViewModel>().ReverseMap();
+            Mapper.CreateMap<Player, LeagueChampViewModel>().ReverseMap();
             Mapper.CreateMap<Team, TeamViewModel>().ReverseMap();
             Mapper.CreateMap<Week, WeekViewModel>().ReverseMap();
             Mapper.CreateMap<Season, SeasonViewModel>().ReverseMap();

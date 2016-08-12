@@ -24,11 +24,11 @@ namespace NewLeague.Models
         public bool Played { get; set; }
         public DateTime? Date { get; set; }
         public string Time { get; set; }
-        public virtual Outstanding Outstanding { get; set; }
-        public virtual CleanSheet HomeGoalkeeper { get; set; }
-        public virtual CleanSheet AwayGoalkeeper { get; set; }
-        public int ?AwayGoalkeeperId { get; set; }
+        public virtual Player Outstanding { get; set; }
+        public virtual Player HomeGoalkeeper { get; set; }
+        public virtual Player AwayGoalkeeper { get; set; }
+        public int? AwayGoalkeeperId { get; set; }
         public int? HomeGoalkeeperId { get; set; }
-        public int?OutstandingId { get; set; }
+        public int? OutstandingId { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿var HomeCtrl = function ($scope, CommonServices, TableService) {
+﻿var HomeCtrl = function ($rootScope,$scope, CommonServices, TableService) {
     $scope.seasons = CommonServices.seasons;
     $scope.items = TableService.table;
     $scope.season = $scope.seasons[CommonServices.currentSeasonOption];

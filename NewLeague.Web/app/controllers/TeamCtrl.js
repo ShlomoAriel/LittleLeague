@@ -26,7 +26,7 @@
         });
     };
     $scope.addTeamCode = function () {
-        $http.post('http://localhost:55506///api/Match/AddTeamCode', $scope.teamCode).success(function (data) {
+        $http.post('http://beta.redlionleague.com///api/Match/AddTeamCode', $scope.teamCode).success(function (data) {
             alert('Team Code Added');
         }).error(function () {
             alert('Error');

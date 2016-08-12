@@ -4,55 +4,70 @@ app.config(["$httpProvider", function () {
 ]);
 
 app.factory("Teams", function ($resource) {
-    return $resource("http://localhost:55506///api/Team/:id", { id: "@id" }, {
-        update: { url: "http://localhost:55506///api/Team/PutTeam", method: "PUT" },
-        'get': { url: "http://localhost:55506///api/Team/GetTeam", method: "GET", isArray: false },
-        delete: { url: "http://localhost:55506///api/Team/DeleteTeam", method: "DELETE" }
+    return $resource("http://beta.redlionleague.com///api/Team/:id", { id: "@id" }, {
+        update: { url: "http://beta.redlionleague.com///api/Team/PutTeam", method: "PUT" },
+        'get': { url: "http://beta.redlionleague.com///api/Team/GetTeam", method: "GET", isArray: false },
+        delete: { url: "http://beta.redlionleague.com///api/Team/DeleteTeam", method: "DELETE" }
     });
 });
 
 app.factory("Players", function ($resource) {
-    return $resource("http://localhost:55506///api/Player/:id", { id: "@id" }, {
+    return $resource("http://beta.redlionleague.com///api/Player/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        'get': { url: "http://localhost:55506///api/Player/GetPlayer", method: "GET", isArray: false },
-        delete: { url: "http://localhost:55506///api/Player/DeletePlayer", method: "DELETE" }
+        'get': { url: "http://beta.redlionleague.com///api/Player/GetPlayer", method: "GET", isArray: false },
+        delete: { url: "http://beta.redlionleague.com///api/Player/DeletePlayer", method: "DELETE" }
     });
 });
 
 app.factory("Weeks", function ($resource) {
-    return $resource("http://localhost:55506///api/Weeks/:id", { id: "@id" }, {
+    return $resource("http://beta.redlionleague.com///api/Weeks/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55506///api/Weeks/DeleteWeek", method: "DELETE" }
+        delete: { url: "http://beta.redlionleague.com///api/Weeks/DeleteWeek", method: "DELETE" }
     });
 });
 app.factory("Seasons", function ($resource) {
-    return $resource("http://localhost:55506///api/Seasons/:id", { id: "@id" }, {
+    return $resource("http://beta.redlionleague.com///api/Seasons/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55506///api/Seasons/DeleteSeason", method: "DELETE" }
+        delete: { url: "http://beta.redlionleague.com///api/Seasons/DeleteSeason", method: "DELETE" }
     });
 });
 app.factory("Goals", function ($resource) {
-    return $resource("http://localhost:55506///api/Goal/:id", { id: "@id" }, {
+    return $resource("http://beta.redlionleague.com///api/Goal/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55506///api/Goal/DeleteGoal", method: "DELETE" }
+        delete: { url: "http://beta.redlionleague.com///api/Goal/DeleteGoal", method: "DELETE" }
     });
 });
-app.factory("Assists", function ($resource) {
-    return $resource("http://localhost:55506///api/Assist/:id", { id: "@id" }, {
+
+app.factory("CleanSheets", function ($resource) {
+    return $resource("http://beta.redlionleague.com///api/CleanSheets/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55506///api/Assists/DeleteAssist", method: "DELETE" }
+        delete: { url: "http://beta.redlionleague.com///api/CleanSheets/DeleteCleanSheet", method: "DELETE" }
+    });
+});
+app.factory("Outstandings", function ($resource) {
+    return $resource("http://beta.redlionleague.com///api/Outstandings/:id", { id: "@id" }, {
+        update: { method: "PUT" },
+        delete: { url: "http://beta.redlionleague.com///api/Outstandings/DeleteOutstanding", method: "DELETE" }
+    });
+});
+
+
+app.factory("Assists", function ($resource) {
+    return $resource("http://beta.redlionleague.com///api/Assist/:id", { id: "@id" }, {
+        update: { method: "PUT" },
+        delete: { url: "http://beta.redlionleague.com///api/Assists/DeleteAssist", method: "DELETE" }
     });
 });
 app.factory("Attendance", function ($resource) {
-    return $resource("http://localhost:55506///api/Attendance/:id", { id: "@id" }, {
+    return $resource("http://beta.redlionleague.com///api/Attendance/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55506///api/Attendance/DeleteAttendance", method: "DELETE" }
+        delete: { url: "http://beta.redlionleague.com///api/Attendance/DeleteAttendance", method: "DELETE" }
     });
 });
 app.factory("Matches", function ($resource) {
-    return $resource("http://localhost:55506///api/Match/:id", { id: "@id" }, {
+    return $resource("http://beta.redlionleague.com///api/Match/:id", { id: "@id" }, {
         update: { method: "PUT" },
-        delete: { url: "http://localhost:55506///api/Match/DeleteMatch", method: "DELETE" }
+        delete: { url: "http://beta.redlionleague.com///api/Match/DeleteMatch", method: "DELETE" }
     });
 });
 
@@ -200,6 +215,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state("main", { abstract: true, url: "/main", controller: "MainCtrl", templateUrl: "templates/main.html" })
         .state("main.table", { url: "/table", controller: HomeCtrl, templateUrl: "templates/table.html" })
+        .state("main.league-champ", { url: "/league-champ", controller: LeagueChampCtrl, templateUrl: "templates/league-champ.html" })
         .state("main.terms", { url: "/terms", templateUrl: "templates/terms.html" })
         .state("main.terms.rules", { url: "/rules", templateUrl: "templates/terms/rules.html" })
         .state("main.terms.schedule", { url: "/schedule", templateUrl: "templates/terms/schedule.html" })

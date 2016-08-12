@@ -235,10 +235,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AssistController.cs" />
     <Compile Include="Controllers\AttendancesController.cs" />
+    <Compile Include="Controllers\CleanSheetsController.cs" />
     <Compile Include="Controllers\GoalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogoesController.cs" />
     <Compile Include="Controllers\MatchController.cs" />
+    <Compile Include="Controllers\OutstandingsController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\SeasonsController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
@@ -359,6 +361,70 @@
     <Compile Include="Migrations\201605081213266_attendance-update2.Designer.cs">
       <DependentUpon>201605081213266_attendance-update2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605110421311_clean-shhet2.cs" />
+    <Compile Include="Migrations\201605110421311_clean-shhet2.Designer.cs">
+      <DependentUpon>201605110421311_clean-shhet2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121249055_clean-shhet3.cs" />
+    <Compile Include="Migrations\201605121249055_clean-shhet3.Designer.cs">
+      <DependentUpon>201605121249055_clean-shhet3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130248420_clean-sheet.cs" />
+    <Compile Include="Migrations\201605130248420_clean-sheet.Designer.cs">
+      <DependentUpon>201605130248420_clean-sheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130256259_clean-sheet2.cs" />
+    <Compile Include="Migrations\201605130256259_clean-sheet2.Designer.cs">
+      <DependentUpon>201605130256259_clean-sheet2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130301312_match-player-ids.cs" />
+    <Compile Include="Migrations\201605130301312_match-player-ids.Designer.cs">
+      <DependentUpon>201605130301312_match-player-ids.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130313320_match-player-ids2.cs" />
+    <Compile Include="Migrations\201605130313320_match-player-ids2.Designer.cs">
+      <DependentUpon>201605130313320_match-player-ids2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130315032_match-player-ids3.cs" />
+    <Compile Include="Migrations\201605130315032_match-player-ids3.Designer.cs">
+      <DependentUpon>201605130315032_match-player-ids3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130437303_repair.cs" />
+    <Compile Include="Migrations\201605130437303_repair.Designer.cs">
+      <DependentUpon>201605130437303_repair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130648581_testing.cs" />
+    <Compile Include="Migrations\201605130648581_testing.Designer.cs">
+      <DependentUpon>201605130648581_testing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130649512_testing2.cs" />
+    <Compile Include="Migrations\201605130649512_testing2.Designer.cs">
+      <DependentUpon>201605130649512_testing2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130650507_testing3.cs" />
+    <Compile Include="Migrations\201605130650507_testing3.Designer.cs">
+      <DependentUpon>201605130650507_testing3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130652062_testing5.cs" />
+    <Compile Include="Migrations\201605130652062_testing5.Designer.cs">
+      <DependentUpon>201605130652062_testing5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130653160_testing6.cs" />
+    <Compile Include="Migrations\201605130653160_testing6.Designer.cs">
+      <DependentUpon>201605130653160_testing6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130819016_outstanding2.cs" />
+    <Compile Include="Migrations\201605130819016_outstanding2.Designer.cs">
+      <DependentUpon>201605130819016_outstanding2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130822399_outstanding3.cs" />
+    <Compile Include="Migrations\201605130822399_outstanding3.Designer.cs">
+      <DependentUpon>201605130822399_outstanding3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605130832408_outstanding4.cs" />
+    <Compile Include="Migrations\201605130832408_outstanding4.Designer.cs">
+      <DependentUpon>201605130832408_outstanding4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AttendanceViewModel.cs" />
     <Compile Include="Models\Attendance.cs" />
@@ -381,6 +447,7 @@
     <Compile Include="Models\Outstanding.cs" />
     <Compile Include="Models\PlayerRegistrationModel.cs" />
     <Compile Include="Models\PlayerViewModel.cs" />
+    <Compile Include="Models\LeagueChampViewModel.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PositionViewModel.cs" />
     <Compile Include="Models\Position.cs" />
@@ -469,6 +536,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\Littleleague.domain.pubxml" />
     <None Include="Properties\PublishProfiles\RedLion.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -587,9 +655,6 @@
     <EmbeddedResource Include="Migrations\201605070551323_matchUpdate3.resx">
       <DependentUpon>201605070551323_matchUpdate3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605070952256_attend.resx">
-      <DependentUpon>201605070952256_attend.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605071004036_matchUpdate1.resx">
       <DependentUpon>201605071004036_matchUpdate1.cs</DependentUpon>
     </EmbeddedResource>
@@ -602,8 +667,53 @@
     <EmbeddedResource Include="Migrations\201605080800416_matchUpdate6.resx">
       <DependentUpon>201605080800416_matchUpdate6.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605081213266_attendance-update2.resx">
-      <DependentUpon>201605081213266_attendance-update2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605110421311_clean-shhet2.resx">
+      <DependentUpon>201605110421311_clean-shhet2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121249055_clean-shhet3.resx">
+      <DependentUpon>201605121249055_clean-shhet3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130248420_clean-sheet.resx">
+      <DependentUpon>201605130248420_clean-sheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130256259_clean-sheet2.resx">
+      <DependentUpon>201605130256259_clean-sheet2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130301312_match-player-ids.resx">
+      <DependentUpon>201605130301312_match-player-ids.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130313320_match-player-ids2.resx">
+      <DependentUpon>201605130313320_match-player-ids2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130315032_match-player-ids3.resx">
+      <DependentUpon>201605130315032_match-player-ids3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130437303_repair.resx">
+      <DependentUpon>201605130437303_repair.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130648581_testing.resx">
+      <DependentUpon>201605130648581_testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130649512_testing2.resx">
+      <DependentUpon>201605130649512_testing2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130650507_testing3.resx">
+      <DependentUpon>201605130650507_testing3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130652062_testing5.resx">
+      <DependentUpon>201605130652062_testing5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130653160_testing6.resx">
+      <DependentUpon>201605130653160_testing6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130819016_outstanding2.resx">
+      <DependentUpon>201605130819016_outstanding2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130822399_outstanding3.resx">
+      <DependentUpon>201605130822399_outstanding3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605130832408_outstanding4.resx">
+      <DependentUpon>201605130832408_outstanding4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

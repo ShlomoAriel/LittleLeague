@@ -1,8 +1,12 @@
-﻿<tabset>
-    <tab ng-repeat="t in editTabs"
-         heading="{{t.heading}}"
-         select="go(t.route)"
-         active="t.active">
-    </tab>
-</tabset>
+﻿<div class="tabs tabs-style-linebox">
+    <nav>
+        <tabset>
+            <tab ng-repeat="t in editTabs"
+                 heading="{{t.heading}}"
+                 select="go(t.route)"
+                 active="t.active">
+            </tab>
+        </tabset>
+    </nav>
+</div>
 <div ui-view></div>

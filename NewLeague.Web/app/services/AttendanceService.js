@@ -3,7 +3,7 @@
     _data.attendancePlayers = [];
 
     _data.getMatchAttendance = function (matchId) {
-        var promise = $http.get('http://localhost:55506///api/Match/GetMatchAttendance', {
+        var promise = $http.get('http://beta.redlionleague.com///api/Match/GetMatchAttendance', {
             params: { matchId: matchId }
         }).success(function (data) {
             angular.copy(data, _data.attendancePlayers);
@@ -12,7 +12,7 @@
     };
     _data.updateMatchAttendance = function (matches) {
         var promise =
-            $http.post('http://localhost:55506///api/Match/UpdateAttendance', matches);
+            $http.post('http://beta.redlionleague.com///api/Match/UpdateAttendance', matches);
         return promise;
     };
 });

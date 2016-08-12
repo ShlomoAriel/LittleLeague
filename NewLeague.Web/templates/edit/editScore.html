@@ -100,19 +100,28 @@
                 <div class="col-md-12 col-xs-12">
                     <label class="">שער נקי בית</label>
                     <div class="">
-                        <select ng-model="fixture.HomeGoalkeeper.PlayerId" ng-options="player.Id as player.Name for player in players | homePlayers:fixture" class="form-control col-xs-9"></select>
+                        <select ng-model="fixture.HomeGoalkeeperId" ng-options="player.Id as player.Name for player in players | homePlayers:fixture" class="form-control col-xs-9"></select>
+                        <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addHomeCleanSheet()">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-12 col-xs-12">
                     <label class="">שער נקי חוץ</label>
                     <div class="">
                         <select ng-model="fixture.AwayGoalkeeperId" ng-options="player.Id as player.Name for player in players | awayPlayers:fixture" class="form-control col-xs-9"></select>
+                        <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addAwayCleanSheet()">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-12 col-xs-12">
                     <label class="">מצטיין</label>
                     <div class="">
                         <select ng-model="fixture.OutstandingId" ng-options="player.Id as player.Team.Name+': '+player.Name for player in players | matchPlayers:fixture" class="form-control col-xs-9"></select>
+                        <a class="btn btn-info btn-flat col-md-2 col-xs-3" ng-click="addOutstanding()">
+                            <i class="glyphicon glyphicon-plus"></i>
+                        </a>
                     </div>
                 </div>
             </div>

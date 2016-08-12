@@ -33,10 +33,16 @@ namespace NewLeague.Domain.Models.NewLeague
         public DbSet<Season> Seasons { get; set; }
 
         public DbSet<Position> Positions { get; set; }
+        //public DbSet<Outstanding> Outstandings { get; set; }
+        //public DbSet<CleanSheet> CleanSheets { get; set; }
 
-        public System.Data.Entity.DbSet<Assist> Assists { get; set; }
+        public DbSet<Assist> Assists { get; set; }
 
-        public System.Data.Entity.DbSet<Attendance> Attendances { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
+
+        public DbSet<CleanSheet> CleanSheets { get; set; }
+
+        public DbSet<Outstanding> Outstandings { get; set; }
 
        
 

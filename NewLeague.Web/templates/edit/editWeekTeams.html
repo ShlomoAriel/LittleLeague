@@ -16,10 +16,10 @@
     </div>
     <table class="table big-font-table table-plugins table-hover">
         <tr ng-repeat="fixture in selectedweek" id="fixture_{{fixture.Id}}">
-            <td><select ng-model="fixture.HomeId" ng-options="item.Id as item.Name for item in teams" class="form-control date-custom"></select></td>
+            <td><select ng-model="fixture.HomeId" ng-options="item.Id as item.Name for item in seasonTeams" class="form-control date-custom"></select></td>
             <td><div class="date-custom score-cell">{{fixture.HomeGoals}}</div></td>
             <td><div class="date-custom score-cell">{{fixture.AwayGoals}}</div></td>
-            <td><select ng-model="fixture.AwayId" ng-options="item.Id as item.Name for item in teams" class="form-control date-custom"></select></td>
+            <td><select ng-model="fixture.AwayId" ng-options="item.Id as item.Name for item in seasonTeams" class="form-control date-custom"></select></td>
             <td style="direction:ltr">
                 <datetimepicker ng-model="fixture.Date"
                                 min-date="minDate" show-weeks="showWeeks" hour-step="hourStep"
