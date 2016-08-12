@@ -233,11 +233,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AssistController.cs" />
-    <Compile Include="Controllers\AttendancesController.cs" />
     <Compile Include="Controllers\GoalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LeaguesController.cs" />
     <Compile Include="Controllers\LogoesController.cs" />
     <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
@@ -320,56 +317,10 @@
     <Compile Include="Migrations\201605031320171_isadmin.Designer.cs">
       <DependentUpon>201605031320171_isadmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605060506467_assists.cs" />
-    <Compile Include="Migrations\201605060506467_assists.Designer.cs">
-      <DependentUpon>201605060506467_assists.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605070523369_matchUpdate.cs" />
-    <Compile Include="Migrations\201605070523369_matchUpdate.Designer.cs">
-      <DependentUpon>201605070523369_matchUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605070548338_matchUpdate2.cs" />
-    <Compile Include="Migrations\201605070548338_matchUpdate2.Designer.cs">
-      <DependentUpon>201605070548338_matchUpdate2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605070551323_matchUpdate3.cs" />
-    <Compile Include="Migrations\201605070551323_matchUpdate3.Designer.cs">
-      <DependentUpon>201605070551323_matchUpdate3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605070952256_attend.cs" />
-    <Compile Include="Migrations\201605070952256_attend.Designer.cs">
-      <DependentUpon>201605070952256_attend.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605071004036_matchUpdate1.cs" />
-    <Compile Include="Migrations\201605071004036_matchUpdate1.Designer.cs">
-      <DependentUpon>201605071004036_matchUpdate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605071018542_matchUpdat2.cs" />
-    <Compile Include="Migrations\201605071018542_matchUpdat2.Designer.cs">
-      <DependentUpon>201605071018542_matchUpdat2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605071027307_matchUpdate31.cs" />
-    <Compile Include="Migrations\201605071027307_matchUpdate31.Designer.cs">
-      <DependentUpon>201605071027307_matchUpdate31.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605080800416_matchUpdate6.cs" />
-    <Compile Include="Migrations\201605080800416_matchUpdate6.Designer.cs">
-      <DependentUpon>201605080800416_matchUpdate6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605081213266_attendance-update2.cs" />
-    <Compile Include="Migrations\201605081213266_attendance-update2.Designer.cs">
-      <DependentUpon>201605081213266_attendance-update2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AttendanceViewModel.cs" />
-    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\AuthContext.cs" />
     <Compile Include="Models\AuthRepository.cs" />
-    <Compile Include="Models\OutstandingViewModel.cs" />
-    <Compile Include="Models\CleanSheet.cs" />
     <Compile Include="Models\File.cs" />
-    <Compile Include="Models\Assist.cs" />
-    <Compile Include="Models\AssistViewModel.cs" />
     <Compile Include="Models\GoalViewModel.cs" />
     <Compile Include="Models\Goal.cs" />
     <Compile Include="Models\IdentityUser.cs" />
@@ -378,17 +329,13 @@
     <Compile Include="Models\MatchViewModel.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\NewLeague\DomainContext.cs" />
-    <Compile Include="Models\CleanSheetViewModel.cs" />
-    <Compile Include="Models\Outstanding.cs" />
     <Compile Include="Models\PlayerRegistrationModel.cs" />
     <Compile Include="Models\PlayerViewModel.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PositionViewModel.cs" />
     <Compile Include="Models\Position.cs" />
-    <Compile Include="Models\League.cs" />
     <Compile Include="Models\SeasonMatchesViewModel.cs" />
     <Compile Include="Models\SeasonPlayer.cs" />
-    <Compile Include="Models\LeagueViewModel.cs" />
     <Compile Include="Models\SeasonViewModel.cs" />
     <Compile Include="Models\Season.cs" />
     <Compile Include="Models\SeasonTeam.cs" />
@@ -578,36 +525,6 @@
     <EmbeddedResource Include="Migrations\201605031320171_isadmin.resx">
       <DependentUpon>201605031320171_isadmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605060506467_assists.resx">
-      <DependentUpon>201605060506467_assists.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605070523369_matchUpdate.resx">
-      <DependentUpon>201605070523369_matchUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605070548338_matchUpdate2.resx">
-      <DependentUpon>201605070548338_matchUpdate2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605070551323_matchUpdate3.resx">
-      <DependentUpon>201605070551323_matchUpdate3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605070952256_attend.resx">
-      <DependentUpon>201605070952256_attend.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605071004036_matchUpdate1.resx">
-      <DependentUpon>201605071004036_matchUpdate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605071018542_matchUpdat2.resx">
-      <DependentUpon>201605071018542_matchUpdat2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605071027307_matchUpdate31.resx">
-      <DependentUpon>201605071027307_matchUpdate31.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605080800416_matchUpdate6.resx">
-      <DependentUpon>201605080800416_matchUpdate6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605081213266_attendance-update2.resx">
-      <DependentUpon>201605081213266_attendance-update2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -623,7 +540,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55506</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
